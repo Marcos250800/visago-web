@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { LogoMarkAnimated } from "@/components/brand/Logo";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -110,19 +111,15 @@ function HeroLogoMotif() {
           </circle>
         </svg>
 
-        {/* Isotipo central (placeholder del logo) */}
-        <div className="absolute left-1/2 top-1/2 flex h-[26%] w-[26%] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease, delay: 0.2 }}
-            className="grid h-full w-full place-items-center rounded-full border border-line"
-          >
-            <span className="font-display text-[clamp(2rem,7vmin,5rem)] font-bold tracking-tightest opacity-90">
-              V
-            </span>
-          </motion.div>
-        </div>
+        {/* Isotipo central animado (logo VisaGo) */}
+        <motion.div
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease, delay: 0.2 }}
+          className="absolute left-1/2 top-1/2 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+        >
+          <LogoMarkAnimated className="h-auto w-full" />
+        </motion.div>
       </div>
     </div>
   );
