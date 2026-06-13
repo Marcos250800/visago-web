@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SITE } from "@/lib/site";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -54,12 +58,26 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+// Evita el parpadeo de tema (FOUC): aplica el tema guardado antes de hidratar.
+const themeScript = `(function(){try{var t=localStorage.getItem('visago-theme');if(t==='light'){document.documentElement.classList.add('light')}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="bg-paper text-ink antialiased">{children}</body>
+    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-background text-foreground antialiased">
+        <ThemeProvider>
+          <SmoothScroll>
+            <Navbar />
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -19,9 +19,18 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Tokens semánticos (controlados por sección, sin auto dark-mode)
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // Tokens semánticos (cambian con el tema dark/light).
+        // Formato de canales RGB → habilita modificadores de opacidad (/80).
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        line: "var(--border)",
+        // Bloque de contraste (invertido respecto al tema actual)
+        contrast: {
+          DEFAULT: "rgb(var(--contrast-bg) / <alpha-value>)",
+          fg: "rgb(var(--contrast-fg) / <alpha-value>)",
+        },
         ink: {
           DEFAULT: "#0a0a0b",
           soft: "#16161a",
