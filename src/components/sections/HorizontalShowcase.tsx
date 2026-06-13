@@ -22,21 +22,21 @@ const CARDS: Card[] = [
     title: "Estudiar en España",
     desc: "Visado de estudio, homologación de títulos, máster y formación profesional.",
     href: "/blog-espana",
-    // image: "/showcase/espana.jpg",
+    image: "/showcase/espana.jpg",
   },
   {
     kicker: "Destino · EE.UU.",
     title: "Estudiar en EE.UU.",
     desc: "Visados F-1 / M-1, admisiones universitarias y planificación de costes.",
     href: "/blog-eeuu",
-    // image: "/showcase/eeuu.jpg",
+    image: "/showcase/eeuu.jpg",
   },
   {
     kicker: "Recurso · BecaLab",
     title: "Becas con IA",
     desc: "Tu mentor inteligente para becas en España: probabilidad de éxito y optimización con IA.",
     href: "/becalab",
-    // image: "/showcase/becalab.jpg",
+    image: "/showcase/becalab.jpg",
   },
   {
     kicker: "Empieza hoy",
@@ -106,18 +106,22 @@ export function HorizontalShowcase() {
           {CARDS.map((card) => {
             const Inner = (
               <>
-                {card.image ? (
+                {/* Base (placeholder) siempre presente */}
+                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-card to-background" />
+                {card.image && (
                   <div className="absolute inset-0 -z-10">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={card.image}
                       alt=""
+                      onError={(e) => {
+                        const w = e.currentTarget.parentElement;
+                        if (w) w.style.display = "none";
+                      }}
                       className="h-full w-full object-cover [filter:grayscale(0.55)_contrast(1.03)]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                   </div>
-                ) : (
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-b from-card to-background" />
                 )}
                 <LogoMark className="pointer-events-none absolute -right-12 -top-10 h-52 w-52 text-foreground/[0.05] transition-transform duration-700 group-hover:scale-110 group-hover:text-foreground/[0.08]" />
 
