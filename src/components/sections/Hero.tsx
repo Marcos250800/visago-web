@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { LogoParticles } from "@/components/brand/LogoParticles";
@@ -10,10 +11,19 @@ const ease = [0.16, 1, 0.3, 1] as const;
 /**
  * Hero principal — "Tu ruta segura".
  * El logo se ensambla con partículas (interactivo). Profundidad con glow + grano.
+ * El contenido hace parallax (se eleva y desvanece) al hacer scroll.
  */
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 110]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+
   return (
-    <section className="grain relative flex min-h-[100svh] flex-col justify-between overflow-hidden bg-background text-foreground">
+    <section
+      ref={heroRef}
+      className="grain relative flex min-h-[100svh] flex-col justify-between overflow-hidden bg-background text-foreground"
+    >
       {/* Profundidad: glow radial sutil */}
       <div
         aria-hidden
@@ -29,7 +39,7 @@ export function Hero() {
         <LogoParticles className="h-full w-full" />
       </div>
 
-      <div className="container relative z-10 flex flex-1 flex-col justify-center pt-28">
+      <motion.div style={{ y, opacity }} className="container relative z-10 flex flex-1 flex-col justify-center pt-28">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,7 +89,7 @@ export function Hero() {
             Ver servicios
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
       <div className="container relative z-10 flex items-end justify-between pb-8 pt-10">
         <span className="kicker">{SITE.location}</span>
