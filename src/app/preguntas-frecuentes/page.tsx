@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqAccordion } from "@/components/sections/Faq";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqSchema } from "@/lib/seo";
+import { FAQS } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Preguntas frecuentes",
@@ -13,6 +16,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main>
+      <JsonLd data={faqSchema(FAQS)} />
       <PageHeader
         kicker="Preguntas frecuentes"
         title="Todo lo que necesitas saber."

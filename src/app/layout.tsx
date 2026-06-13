@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -70,6 +72,8 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="bg-background text-foreground antialiased">
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
         <ThemeProvider>
           <SmoothScroll>
             <Navbar />
