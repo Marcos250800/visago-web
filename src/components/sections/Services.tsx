@@ -3,16 +3,26 @@ import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { Tilt } from "@/components/motion/Tilt";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { ParticleField } from "@/components/ui/ParticleField";
+import { LogoMarkAnimated } from "@/components/brand/Logo";
 import { SERVICES, SERVICES_INTRO } from "@/lib/content";
 
 /** Servicios — grid de los 7 servicios (texto verbatim). */
 export function Services() {
   return (
-    <section id="servicios" className="relative bg-background py-24 md:py-36">
+    <section id="servicios" className="relative overflow-hidden bg-background py-24 md:py-36">
       <SectionDivider />
-      <div className="container">
-        <div className="grid gap-8 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-8">
+      {/* Malla de partículas que rellena la zona derecha de la cabecera */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_62%_85%_at_76%_28%,black,transparent_74%)]"
+      >
+        <ParticleField className="h-full w-full" connect={130} />
+      </div>
+
+      <div className="container relative">
+        <div className="grid gap-10 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-7">
             <Reveal>
               <p className="kicker">Servicios</p>
             </Reveal>
@@ -20,12 +30,20 @@ export function Services() {
               <RevealWords text={SERVICES_INTRO} />
             </h2>
           </div>
-          <div className="md:col-span-3 md:col-start-10">
+
+          {/* Panel derecho: isotipo animado + índice + CTA (el botón ya no flota) */}
+          <div className="md:col-span-4 md:col-start-9">
             <Reveal delay={0.1}>
-              <Link href="/servicios" className="btn-ghost">
-                Ver todos los servicios
-                <span aria-hidden>→</span>
-              </Link>
+              <div className="relative flex flex-col items-start gap-6 rounded-2xl border border-line bg-card/40 p-7 backdrop-blur-sm">
+                <LogoMarkAnimated className="h-12 w-12 text-foreground/70" />
+                <span className="font-mono text-xs uppercase tracking-kicker text-muted">
+                  01 — 0{SERVICES.length}
+                </span>
+                <Link href="/servicios" className="btn-ghost">
+                  Ver todos los servicios
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
             </Reveal>
           </div>
         </div>

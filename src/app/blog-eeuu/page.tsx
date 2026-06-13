@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Prose } from "@/components/content/Prose";
+import { ArticleSection } from "@/components/content/ArticleSection";
 import { Reveal } from "@/components/motion/Reveal";
 import { cleanArticle } from "@/lib/article-utils";
 import { blogEeuu } from "@/lib/articles";
@@ -22,13 +23,11 @@ export default function BlogEeuuPage() {
         intro="Requisitos académicos y administrativos, los pasos del proceso y cuánto cuesta estudiar en Estados Unidos."
       />
 
-      <section className="bg-background py-16 md:py-24">
-        <div className="container">
-          <Reveal>
-            <Prose className="max-w-3xl">{cleanArticle(blogEeuu, { stripTitle: true })}</Prose>
-          </Reveal>
-        </div>
-      </section>
+      <ArticleSection>
+        <Reveal>
+          <Prose className="max-w-3xl">{cleanArticle(blogEeuu, { stripTitle: true })}</Prose>
+        </Reveal>
+      </ArticleSection>
 
       <CtaBanner title="¿Sueñas con estudiar en EE.UU.?" subtitle="Gestionamos tu visa F-1/M-1 y te acompañamos en cada paso." />
     </main>

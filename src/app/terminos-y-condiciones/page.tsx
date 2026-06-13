@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Prose } from "@/components/content/Prose";
+import { ArticleSection } from "@/components/content/ArticleSection";
 import { cleanArticle } from "@/lib/article-utils";
 import { terminos } from "@/lib/articles";
 
@@ -17,11 +18,9 @@ export default function TerminosPage() {
     <main>
       <PageHeader kicker="Legal" title="Términos y Condiciones" />
 
-      <section className="bg-background py-16 md:py-24">
-        <div className="container">
-          <Prose className="max-w-3xl">{cleanArticle(terminos)}</Prose>
-        </div>
-      </section>
+      <ArticleSection>
+        <Prose className="max-w-3xl">{cleanArticle(terminos)}</Prose>
+      </ArticleSection>
     </main>
   );
 }
