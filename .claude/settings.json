@@ -6,7 +6,17 @@
       "Bash(npx next *)",
       "Bash(node scripts/scrape.mjs)",
       "Bash(npm install *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(claude mcp *)",
+      "Read(//c/Users/Marcos/**)",
+      "Read(//c/Users/Marcos/.claude/**)",
+      "Bash(cp \"C:/Users/Marcos/.claude.json\" \"C:/Users/Marcos/.claude.json.bak\" && echo \"Backup creado: ~/.claude.json.bak\")",
+      "Bash(node -e 'const c=JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\".claude.json\",\"utf8\"\\)\\); console.log\\(\"JSON válido ✓\"\\); console.log\\(\"MCP servers \\(scope usuario\\):\", Object.keys\\(c.mcpServers\\)\\); console.log\\(\"magic:\", JSON.stringify\\(c.mcpServers.magic\\)\\);')",
+      "Bash(npm view *)",
+      "Bash(npx --yes @magicuidesign/cli@latest install claude)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Marcos"
     ]
   }
 }

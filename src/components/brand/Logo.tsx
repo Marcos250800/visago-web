@@ -4,27 +4,22 @@ import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Isotipo de VisaGo — recreación vectorial del logo (ondas).
- * Usa currentColor → blanco en tema oscuro, negro en claro, automáticamente.
+ * Isotipo de VisaGo — recreación vectorial fiel del logo (ondas finas).
+ * Líneas delgadas, en fase, proporción cuadrada. Usa currentColor → se adapta
+ * al tema (blanco en oscuro, negro en claro).
  */
 
-// Una línea de onda: 6 medios-periodos (q) → 72 de ancho, amplitud ±3.2
+// Una línea de onda: 6 medios-periodos (3 ondas), amplitud ±2.2, ancho 72.
 const WAVE =
-  "M0,0 q6,-3.2 12,0 q6,3.2 12,0 q6,-3.2 12,0 q6,3.2 12,0 q6,-3.2 12,0 q6,3.2 12,0";
+  "M0,0 q6,-2.2 12,0 q6,2.2 12,0 q6,-2.2 12,0 q6,2.2 12,0 q6,-2.2 12,0 q6,2.2 12,0";
 const COUNT = 11;
-const GAP = 5.4;
-const TOP = 8;
-const STROKE = 3.6;
-const VIEWBOX = "-4 0 80 70";
+const GAP = 6.6;
+const TOP = 7;
+const STROKE = 1.7;
+const VIEWBOX = "-2 1 76 79";
 
 /** Versión estática (navbar, footer, favicon). */
-export function LogoMark({
-  className,
-  label = "VisaGo",
-}: {
-  className?: string;
-  label?: string;
-}) {
+export function LogoMark({ className, label = "VisaGo" }: { className?: string; label?: string }) {
   return (
     <svg viewBox={VIEWBOX} role="img" aria-label={label} className={cn("text-current", className)}>
       {Array.from({ length: COUNT }).map((_, i) => (
@@ -43,10 +38,9 @@ export function LogoMark({
   );
 }
 
-/** Versión animada (hero): las ondas riplean en secuencia, como agua/bandera. */
+/** Versión animada (ripple sutil de ondas). */
 export function LogoMarkAnimated({ className }: { className?: string }) {
   const reduce = useReducedMotion();
-
   return (
     <svg viewBox={VIEWBOX} role="img" aria-label="VisaGo" className={cn("text-current", className)}>
       {Array.from({ length: COUNT }).map((_, i) => {
@@ -61,12 +55,8 @@ export function LogoMarkAnimated({ className }: { className?: string }) {
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{ y: base }}
-            animate={reduce ? { y: base } : { y: [base, base - 2.4, base, base + 2.4, base] }}
-            transition={
-              reduce
-                ? undefined
-                : { duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: i * 0.13 }
-            }
+            animate={reduce ? { y: base } : { y: [base, base - 1.8, base, base + 1.8, base] }}
+            transition={reduce ? undefined : { duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: i * 0.13 }}
           />
         );
       })}

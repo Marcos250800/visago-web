@@ -3,35 +3,53 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
-import { LogoMarkAnimated } from "@/components/brand/Logo";
+import { LogoParticles } from "@/components/brand/LogoParticles";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Hero principal — "Tu ruta segura".
- * El motivo gira en torno al logo (placeholder). Para sustituirlo por la
- * escena Spline real, reemplaza <HeroLogoMotif /> por el componente <Spline />.
+ * El logo se ensambla con partículas (interactivo). Profundidad con glow + grano.
  */
 export function Hero() {
   return (
     <section className="grain relative flex min-h-[100svh] flex-col justify-between overflow-hidden bg-background text-foreground">
-      <HeroLogoMotif />
+      {/* Profundidad: glow radial sutil */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(55% 55% at 72% 38%, rgb(var(--foreground) / 0.08), transparent 70%)",
+        }}
+      />
+
+      {/* Partículas que forman el logo */}
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-40 md:left-auto md:right-[-4%] md:w-[58%] md:opacity-100">
+        <LogoParticles className="h-full w-full" />
+      </div>
 
       <div className="container relative z-10 flex flex-1 flex-col justify-center pt-28">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
-          className="kicker"
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-background/40 px-3.5 py-1.5 backdrop-blur-sm"
         >
-          Asesoría y tramitación de visados · EEUU &amp; España
-        </motion.p>
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground opacity-60" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground" />
+          </span>
+          <span className="font-mono text-[11px] uppercase tracking-kicker text-muted">
+            Visados EEUU &amp; España
+          </span>
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease, delay: 0.08 }}
-          className="mt-6 max-w-[14ch] font-display text-display font-semibold"
+          className="mt-7 max-w-[16ch] font-display text-display font-medium leading-[0.95]"
         >
           Tu ruta segura
         </motion.h1>
@@ -40,7 +58,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease, delay: 0.18 }}
-          className="mt-8 max-w-prose text-balance text-lg text-muted"
+          className="mt-7 max-w-md text-balance text-lg text-muted"
         >
           Facilitamos el acceso a oportunidades internacionales con asesoría
           profesional y gestión completa de tu visa para estudiar, trabajar o
@@ -51,7 +69,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease, delay: 0.28 }}
-          className="mt-10 flex flex-wrap items-center gap-3"
+          className="mt-9 flex flex-wrap items-center gap-3"
         >
           <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Solicitar asesoría
@@ -76,51 +94,5 @@ export function Hero() {
         </motion.span>
       </div>
     </section>
-  );
-}
-
-/**
- * Motivo placeholder centrado en el logo: órbitas + ruta + isotipo "V".
- * Usa currentColor para adaptarse al tema claro/oscuro.
- * >>> Sustituir por <Spline scene="/brand/scene.splinecode" /> cuando llegue. <<<
- */
-function HeroLogoMotif() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center text-foreground"
-    >
-      <div className="absolute right-[-12%] top-1/2 h-[120vmin] w-[120vmin] -translate-y-1/2 opacity-60 md:right-[-4%] md:opacity-100">
-        {/* Órbitas concéntricas */}
-        <div className="absolute inset-0 animate-spin-slow rounded-full border border-current opacity-[0.08]" />
-        <div className="absolute inset-[12%] rounded-full border border-current opacity-[0.06]" />
-        <div className="absolute inset-[26%] animate-spin-slow rounded-full border border-dashed border-current opacity-[0.07]" />
-
-        {/* Ruta + recorrido animado */}
-        <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
-          <path
-            d="M40,360 C140,300 120,140 220,120 C300,104 320,60 360,40"
-            fill="none"
-            stroke="currentColor"
-            strokeOpacity="0.16"
-            strokeWidth="1.5"
-            strokeDasharray="4 6"
-          />
-          <circle r="3.5" fill="currentColor">
-            <animateMotion dur="9s" repeatCount="indefinite" path="M40,360 C140,300 120,140 220,120 C300,104 320,60 360,40" />
-          </circle>
-        </svg>
-
-        {/* Isotipo central animado (logo VisaGo) */}
-        <motion.div
-          initial={{ scale: 0.85, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease, delay: 0.2 }}
-          className="absolute left-1/2 top-1/2 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-        >
-          <LogoMarkAnimated className="h-auto w-full" />
-        </motion.div>
-      </div>
-    </div>
   );
 }

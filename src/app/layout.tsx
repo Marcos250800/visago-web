@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Jost } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -19,6 +20,12 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: "swap",
+});
+const jost = Jost({
+  subsets: ["latin"],
+  variable: "--font-jost",
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
@@ -67,7 +74,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${jost.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
