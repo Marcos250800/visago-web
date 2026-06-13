@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { RevealWords } from "@/components/motion/RevealWords";
 import { ABOUT } from "@/lib/content";
 
 /** Sección "Sobre nosotros" — texto verbatim de la web actual, en clave editorial. */
@@ -9,12 +10,10 @@ export function About() {
         <div className="md:col-span-4">
           <Reveal>
             <p className="kicker">{ABOUT.heading}</p>
-            <p className="mt-6 font-display text-display-sm font-semibold">
-              Empresa online
-              <br />
-              con sede en Suiza.
-            </p>
           </Reveal>
+          <p className="mt-6 font-display text-display-sm font-medium">
+            <RevealWords text="Empresa online con sede en Suiza." />
+          </p>
         </div>
 
         <div className="md:col-span-7 md:col-start-6">

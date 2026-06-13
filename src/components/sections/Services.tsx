@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { RevealWords } from "@/components/motion/RevealWords";
 import { SERVICES, SERVICES_INTRO } from "@/lib/content";
 
 /** Servicios — grid de los 7 servicios (texto verbatim). */
@@ -11,10 +12,10 @@ export function Services() {
           <div className="md:col-span-8">
             <Reveal>
               <p className="kicker">Servicios</p>
-              <h2 className="mt-5 max-w-2xl text-balance font-display text-display-sm font-semibold">
-                {SERVICES_INTRO}
-              </h2>
             </Reveal>
+            <h2 className="mt-5 max-w-2xl text-balance font-display text-display-sm font-medium">
+              <RevealWords text={SERVICES_INTRO} />
+            </h2>
           </div>
           <div className="md:col-span-3 md:col-start-10">
             <Reveal delay={0.1}>

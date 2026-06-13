@@ -118,7 +118,7 @@ export function HorizontalShowcase() {
                         const w = e.currentTarget.parentElement;
                         if (w) w.style.display = "none";
                       }}
-                      className="h-full w-full object-cover [filter:grayscale(0.55)_contrast(1.03)]"
+                      className="h-full w-full object-cover transition-transform duration-[1.2s] ease-smooth [filter:grayscale(0.55)_contrast(1.03)] group-hover:scale-[1.06]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                   </div>
