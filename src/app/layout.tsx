@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Jost } from "next/font/google";
+import { Jost, Questrial } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -27,6 +27,13 @@ const jost = Jost({
   subsets: ["latin"],
   variable: "--font-jost",
   weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+// Wordmark "VisaGo" — geométrica monolínea, casi idéntica al logo oficial.
+const questrial = Questrial({
+  subsets: ["latin"],
+  variable: "--font-wordmark",
+  weight: "400",
   display: "swap",
 });
 
@@ -75,7 +82,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${jost.variable}`}>
+    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${jost.variable} ${questrial.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

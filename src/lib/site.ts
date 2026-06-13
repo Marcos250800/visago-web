@@ -3,6 +3,19 @@
  * Datos de contacto, redes y navegación. Fuente única de verdad.
  */
 
+/**
+ * Logo oficial (lockup completo isotipo + "VisaGo").
+ * Si el usuario deja sus archivos en public/brand/, se insertan TAL CUAL
+ * (pixel-perfect) en navbar y footer. Si están a null, se usa la recreación
+ * vectorial (isotipo SVG + wordmark Questrial).
+ *   - light: versión BLANCA (para tema oscuro)
+ *   - dark:  versión NEGRA  (para tema claro)
+ */
+export const LOGO: { light: string | null; dark: string | null } = {
+  light: null, // p.ej. "/brand/visago-light.svg"
+  dark: null, //  p.ej. "/brand/visago-dark.svg"
+};
+
 export const SITE = {
   name: "VisaGo",
   tagline: "Tu ruta segura",
