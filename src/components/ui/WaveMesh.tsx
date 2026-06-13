@@ -40,8 +40,8 @@ export function WaveMesh({ className }: { className?: string }) {
       canvas!.width = Math.round(w * dpr);
       canvas!.height = Math.round(h * dpr);
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      cols = Math.max(10, Math.min(32, Math.round(w / 24)));
-      rows = Math.max(14, Math.min(46, Math.round(h / 24)));
+      cols = Math.max(12, Math.min(40, Math.round(w / 20)));
+      rows = Math.max(16, Math.min(60, Math.round(h / 20)));
     }
 
     // Campo de altura: suma de senos en movimiento → onda fluida.
@@ -82,8 +82,8 @@ export function WaveMesh({ className }: { className?: string }) {
           sy -= hgt * 16 * persp;
 
           const bright = (hgt + 1.3) / 2.6;
-          const radius = Math.max(0.3, (0.5 + bright * 1.7) * persp);
-          const alpha = Math.max(0, Math.min(0.72, 0.07 + bright * 0.55));
+          const radius = Math.max(0.35, (0.55 + bright * 1.95) * persp);
+          const alpha = Math.max(0, Math.min(0.82, 0.11 + bright * 0.62));
 
           ctx!.beginPath();
           ctx!.fillStyle = `rgba(${rgb},${alpha})`;
