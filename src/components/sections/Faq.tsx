@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FAQS, type Faq as FaqItem } from "@/lib/content";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 /** Acordeón de FAQs reutilizable (home y página dedicada). */
 export function FaqAccordion({ items = FAQS }: { items?: FaqItem[] }) {
@@ -56,7 +57,8 @@ export function FaqAccordion({ items = FAQS }: { items?: FaqItem[] }) {
 /** Sección FAQ para la home. */
 export function Faq() {
   return (
-    <section id="faq" className="border-t border-line bg-background py-24 md:py-36">
+    <section id="faq" className="relative bg-background py-24 md:py-36">
+      <SectionDivider />
       <div className="container grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
           <p className="kicker">Preguntas frecuentes</p>

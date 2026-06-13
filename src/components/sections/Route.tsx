@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { ROUTE_STEPS } from "@/lib/content";
-import { FlickeringGrid } from "@/components/ui/FlickeringGrid";
+import { ParticleField } from "@/components/ui/ParticleField";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { RevealWords } from "@/components/motion/RevealWords";
 
 /**
@@ -21,12 +22,13 @@ export function Route() {
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-background py-24 md:py-36">
-      {/* Malla parpadeante sutil (textura de fondo) */}
+      <SectionDivider />
+      {/* Malla de partículas (rellena el espacio y aporta dinamismo) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent_80%)]"
+        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_75%_80%_at_32%_45%,black,transparent_82%)]"
       >
-        <FlickeringGrid squareSize={3} gridGap={10} maxOpacity={0.12} flickerChance={0.2} />
+        <ParticleField className="h-full w-full" connect={140} />
       </div>
 
       <div className="container relative grid gap-12 md:grid-cols-12">

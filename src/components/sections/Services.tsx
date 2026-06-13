@@ -2,12 +2,14 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { Tilt } from "@/components/motion/Tilt";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { SERVICES, SERVICES_INTRO } from "@/lib/content";
 
 /** Servicios — grid de los 7 servicios (texto verbatim). */
 export function Services() {
   return (
-    <section id="servicios" className="border-t border-line bg-background py-24 md:py-36">
+    <section id="servicios" className="relative bg-background py-24 md:py-36">
+      <SectionDivider />
       <div className="container">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">

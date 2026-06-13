@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { LogoMark } from "@/components/brand/Logo";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { Tilt } from "@/components/motion/Tilt";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { SITE } from "@/lib/site";
 
 type Card = {
@@ -84,8 +85,9 @@ export function HorizontalShowcase() {
     <section
       ref={sectionRef}
       style={{ height: `calc(100svh + ${distance}px)` }}
-      className="relative border-t border-line bg-background"
+      className="relative bg-background"
     >
+      <SectionDivider />
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden py-20">
         <div className="container">
           <div className="flex items-end justify-between gap-6">
