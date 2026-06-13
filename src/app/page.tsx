@@ -3,8 +3,7 @@ import { KeywordMarquee } from "@/components/sections/KeywordMarquee";
 import { About } from "@/components/sections/About";
 import { Route } from "@/components/sections/Route";
 import { Services } from "@/components/sections/Services";
-import { Destinations } from "@/components/sections/Destinations";
-import { BecaLabFeature } from "@/components/sections/BecaLabFeature";
+import { HorizontalShowcase } from "@/components/sections/HorizontalShowcase";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 
@@ -16,8 +15,7 @@ export default function Home() {
       <About />
       <Route />
       <Services />
-      <Destinations />
-      <BecaLabFeature />
+      <HorizontalShowcase />
       <Faq />
       <Contact />
     </main>

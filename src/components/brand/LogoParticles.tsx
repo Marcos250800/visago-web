@@ -46,7 +46,7 @@ export function LogoParticles({ className }: { className?: string }) {
       const half = width / 6;
       const amp = width * 0.03;
       o.strokeStyle = "#fff";
-      o.lineWidth = Math.max(2, width * 0.02);
+      o.lineWidth = Math.max(2, width * 0.032);
       o.lineCap = "round";
       for (let i = 0; i < 11; i++) {
         const y = pad + i * (width / 10);
@@ -63,7 +63,8 @@ export function LogoParticles({ className }: { className?: string }) {
 
       const data = o.getImageData(0, 0, S, S).data;
       const pts: [number, number][] = [];
-      const step = 4;
+      // Paso menor = más partículas (más relleno). Algo mayor en móvil.
+      const step = window.innerWidth < 768 ? 4 : 3;
       for (let y = 0; y < S; y += step) {
         for (let x = 0; x < S; x += step) {
           if (data[(y * S + x) * 4 + 3] > 110) pts.push([x, y]);
