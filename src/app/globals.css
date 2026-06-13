@@ -35,6 +35,12 @@
   border-color: var(--border);
 }
 
+/* Cursor personalizado activo → oculta el nativo (solo desktop) */
+html.cursor-none,
+html.cursor-none * {
+  cursor: none !important;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

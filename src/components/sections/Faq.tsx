@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FAQS, type Faq as FaqItem } from "@/lib/content";
+import { RevealWords } from "@/components/motion/RevealWords";
 
 /** Acordeón de FAQs reutilizable (home y página dedicada). */
 export function FaqAccordion({ items = FAQS }: { items?: FaqItem[] }) {
@@ -59,10 +60,8 @@ export function Faq() {
       <div className="container grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
           <p className="kicker">Preguntas frecuentes</p>
-          <h2 className="mt-5 font-display text-display-sm font-semibold">
-            Resolvemos
-            <br />
-            tus dudas.
+          <h2 className="mt-5 font-display text-display-sm font-medium">
+            <RevealWords text="Resolvemos tus dudas." />
           </h2>
           <p className="mt-6 max-w-xs text-muted">
             ¿No encuentras tu respuesta? Escríbenos y te ayudamos en minutos.

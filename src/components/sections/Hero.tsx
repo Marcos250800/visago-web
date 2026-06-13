@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { LogoParticles } from "@/components/brand/LogoParticles";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -81,13 +82,17 @@ export function Hero() {
           transition={{ duration: 0.9, ease, delay: 0.28 }}
           className="mt-9 flex flex-wrap items-center gap-3"
         >
-          <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary">
-            Solicitar asesoría
-            <span aria-hidden>→</span>
-          </a>
-          <Link href="/servicios" className="btn-ghost">
-            Ver servicios
-          </Link>
+          <Magnetic className="inline-block">
+            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              Solicitar asesoría
+              <span aria-hidden>→</span>
+            </a>
+          </Magnetic>
+          <Magnetic className="inline-block">
+            <Link href="/servicios" className="btn-ghost">
+              Ver servicios
+            </Link>
+          </Magnetic>
         </motion.div>
       </motion.div>
 

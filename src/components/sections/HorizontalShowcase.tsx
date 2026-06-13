@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { LogoMark } from "@/components/brand/Logo";
+import { RevealWords } from "@/components/motion/RevealWords";
 import { SITE } from "@/lib/site";
 
 type Card = {
@@ -89,7 +90,9 @@ export function HorizontalShowcase() {
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="kicker">Destinos &amp; Recursos</p>
-              <h2 className="mt-5 font-display text-display-sm font-medium">Explora tu ruta.</h2>
+              <h2 className="mt-5 font-display text-display-sm font-medium">
+                <RevealWords text="Explora tu ruta." />
+              </h2>
             </div>
             <span className="hidden shrink-0 text-sm text-muted md:block">Desplázate ↓</span>
           </div>

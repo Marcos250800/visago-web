@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 const geistSans = localFont({
@@ -91,6 +92,7 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
         <ThemeProvider>
           <SmoothScroll>
+            <CustomCursor />
             <ScrollProgress />
             <Navbar />
             {children}

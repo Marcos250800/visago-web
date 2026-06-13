@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { ROUTE_STEPS } from "@/lib/content";
 import { FlickeringGrid } from "@/components/ui/FlickeringGrid";
+import { RevealWords } from "@/components/motion/RevealWords";
 
 /**
  * "Tu ruta" — núcleo del scrolltelling.
@@ -33,10 +34,8 @@ export function Route() {
         <div className="md:col-span-4">
           <div className="md:sticky md:top-28">
             <p className="kicker">El proceso</p>
-            <h2 className="mt-5 font-display text-display-sm font-semibold">
-              Tu ruta,
-              <br />
-              paso a paso.
+            <h2 className="mt-5 font-display text-display-sm font-medium">
+              <RevealWords text="Tu ruta, paso a paso." />
             </h2>
             <p className="mt-6 max-w-xs text-muted">
               Un acompañamiento claro y sin fricciones, desde la primera consulta

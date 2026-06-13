@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { RevealWords } from "@/components/motion/RevealWords";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { SITE } from "@/lib/site";
 
@@ -10,10 +11,8 @@ export function Contact() {
         <div className="md:col-span-5">
           <Reveal>
             <p className="kicker">Contáctanos</p>
-            <h2 className="mt-5 font-display text-display-sm font-semibold">
-              ¿Empezamos
-              <br />
-              tu ruta?
+            <h2 className="mt-5 font-display text-display-sm font-medium">
+              <RevealWords text="¿Empezamos tu ruta?" />
             </h2>
             <p className="mt-6 max-w-sm text-muted">
               Coméntanos tus inquietudes para mejorar nuestros servicios. Te
