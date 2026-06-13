@@ -29,10 +29,10 @@ export function Footer() {
             <div>
               <p className="kicker">Empresa</p>
               <ul className="mt-4 space-y-2.5 text-sm">
-                <li><Link href="/contacto" className="text-muted transition-colors hover:text-foreground">Contacto</Link></li>
-                <li><Link href="/preguntas-frecuentes" className="text-muted transition-colors hover:text-foreground">FAQ</Link></li>
+                <li><Link href="/contacto" className="link-underline text-muted transition-colors hover:text-foreground">Contacto</Link></li>
+                <li><Link href="/preguntas-frecuentes" className="link-underline text-muted transition-colors hover:text-foreground">FAQ</Link></li>
                 {FOOTER_LEGAL.map((l) => (
-                  <li key={l.href}><Link href={l.href} className="text-muted transition-colors hover:text-foreground">{l.label}</Link></li>
+                  <li key={l.href}><Link href={l.href} className="link-underline text-muted transition-colors hover:text-foreground">{l.label}</Link></li>
                 ))}
               </ul>
             </div>
@@ -63,7 +63,7 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
       <ul className="mt-4 space-y-2.5 text-sm">
         {links.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="text-muted transition-colors hover:text-foreground">
+            <Link href={l.href} className="link-underline text-muted transition-colors hover:text-foreground">
               {l.label}
             </Link>
           </li>

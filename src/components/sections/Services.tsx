@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { Tilt } from "@/components/motion/Tilt";
 import { SERVICES, SERVICES_INTRO } from "@/lib/content";
 
 /** Servicios — grid de los 7 servicios (texto verbatim). */
@@ -27,12 +28,13 @@ export function Services() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.id} delay={(i % 3) * 0.06} className="group">
+            <Reveal key={s.id} delay={(i % 3) * 0.06} className="group h-full">
+              <Tilt className="h-full" max={6}>
               <Link
                 href={`/servicios#${s.id}`}
-                className="flex h-full flex-col justify-between bg-background p-7 transition-colors duration-300 hover:bg-contrast hover:text-contrast-fg"
+                className="flex h-full flex-col justify-between rounded-2xl border border-line bg-background p-7 transition-colors duration-300 hover:bg-contrast hover:text-contrast-fg"
               >
                 <div className="flex items-start justify-between">
                   <span className="kicker transition-colors group-hover:text-contrast-fg/60">{s.index}</span>
@@ -45,6 +47,7 @@ export function Services() {
                   </p>
                 </div>
               </Link>
+              </Tilt>
             </Reveal>
           ))}
         </div>

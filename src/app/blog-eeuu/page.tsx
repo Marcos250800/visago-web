@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Prose } from "@/components/content/Prose";
+import { Reveal } from "@/components/motion/Reveal";
 import { cleanArticle } from "@/lib/article-utils";
 import { blogEeuu } from "@/lib/articles";
 
@@ -23,7 +24,9 @@ export default function BlogEeuuPage() {
 
       <section className="bg-background py-16 md:py-24">
         <div className="container">
-          <Prose className="max-w-3xl">{cleanArticle(blogEeuu, { stripTitle: true })}</Prose>
+          <Reveal>
+            <Prose className="max-w-3xl">{cleanArticle(blogEeuu, { stripTitle: true })}</Prose>
+          </Reveal>
         </div>
       </section>
 

@@ -102,6 +102,26 @@ html.lenis body {
   .hairline {
     @apply border-t border-line;
   }
+  /* Subrayado animado para enlaces (de derecha→izquierda al hover) */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
   /* Botón primario (alto contraste, se adapta al tema) */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm

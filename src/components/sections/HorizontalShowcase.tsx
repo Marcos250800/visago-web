@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { LogoMark } from "@/components/brand/Logo";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { Tilt } from "@/components/motion/Tilt";
 import { SITE } from "@/lib/site";
 
 type Card = {
@@ -140,16 +141,22 @@ export function HorizontalShowcase() {
                 </div>
               </>
             );
-            const cls =
-              "group relative flex h-[58vh] max-h-[560px] min-h-[400px] w-[80vw] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border border-line p-7 transition-colors duration-300 hover:border-foreground/30 sm:w-[380px]";
-            return card.external ? (
-              <a key={card.title} href={card.href} target="_blank" rel="noopener noreferrer" className={cls}>
-                {Inner}
-              </a>
-            ) : (
-              <Link key={card.title} href={card.href} className={cls}>
-                {Inner}
-              </Link>
+            const wrapCls =
+              "group relative h-[58vh] max-h-[560px] min-h-[400px] w-[80vw] shrink-0 sm:w-[380px]";
+            const innerCls =
+              "relative flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl border border-line p-7 transition-colors duration-300 hover:border-foreground/30";
+            return (
+              <Tilt key={card.title} className={wrapCls} max={5}>
+                {card.external ? (
+                  <a href={card.href} target="_blank" rel="noopener noreferrer" className={innerCls}>
+                    {Inner}
+                  </a>
+                ) : (
+                  <Link href={card.href} className={innerCls}>
+                    {Inner}
+                  </Link>
+                )}
+              </Tilt>
             );
           })}
         </motion.div>

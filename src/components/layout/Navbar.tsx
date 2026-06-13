@@ -53,7 +53,7 @@ export function Navbar() {
                 href={item.href}
                 className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm text-foreground/80 transition-colors hover:text-foreground"
               >
-                {item.label}
+                <span className="link-underline">{item.label}</span>
                 {item.children && (
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50">
                     <path d="M6 9l6 6 6-6" />
