@@ -2,6 +2,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { FlowPaths } from "@/components/ui/FlowPaths";
+import { VerticalBeam } from "@/components/ui/VerticalBeam";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { SITE } from "@/lib/site";
 
@@ -14,6 +15,8 @@ export function Contact() {
         className="pointer-events-none absolute inset-0 text-foreground [mask-image:radial-gradient(ellipse_55%_70%_at_26%_55%,black,transparent_72%)]"
         mirror
       />
+      {/* Haz vertical que nace arriba y atraviesa la sección */}
+      <VerticalBeam className="pointer-events-none absolute inset-y-0 left-[6%] md:left-[9%]" />
       <div className="container relative grid gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <Reveal>
