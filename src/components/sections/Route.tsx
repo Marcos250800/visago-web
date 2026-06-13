@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { ROUTE_STEPS } from "@/lib/content";
+import { FlickeringGrid } from "@/components/ui/FlickeringGrid";
 
 /**
  * "Tu ruta" — núcleo del scrolltelling.
@@ -18,8 +19,16 @@ export function Route() {
   const progress = useSpring(scrollYProgress, { stiffness: 80, damping: 20, mass: 0.3 });
 
   return (
-    <section ref={ref} className="bg-background py-24 md:py-36">
-      <div className="container grid gap-12 md:grid-cols-12">
+    <section ref={ref} className="relative overflow-hidden bg-background py-24 md:py-36">
+      {/* Malla parpadeante sutil (textura de fondo) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent_80%)]"
+      >
+        <FlickeringGrid squareSize={3} gridGap={10} maxOpacity={0.12} flickerChance={0.2} />
+      </div>
+
+      <div className="container relative grid gap-12 md:grid-cols-12">
         {/* Columna fija */}
         <div className="md:col-span-4">
           <div className="md:sticky md:top-28">

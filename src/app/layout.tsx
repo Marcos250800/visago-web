@@ -8,6 +8,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 const geistSans = localFont({
@@ -83,6 +84,7 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
         <ThemeProvider>
           <SmoothScroll>
+            <ScrollProgress />
             <Navbar />
             {children}
             <Footer />
