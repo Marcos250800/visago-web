@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Prose } from "@/components/content/Prose";
 import { ArticleSection } from "@/components/content/ArticleSection";
+import { ShaderBackground } from "@/components/ui/ShaderBackground";
 import { Reveal } from "@/components/motion/Reveal";
 import { cleanArticle } from "@/lib/article-utils";
 import { becaLab } from "@/lib/articles";
@@ -23,7 +24,11 @@ export default function BecaLabPage() {
         intro="Tu mentor inteligente para becas: del diagnóstico de probabilidad a la optimización de tus documentos con IA."
       />
 
-      <ArticleSection>
+      <ArticleSection
+        background={
+          <ShaderBackground className="absolute inset-0 h-full w-full [mask-image:radial-gradient(ellipse_115%_65%_at_50%_30%,black_20%,transparent_80%)] lg:[mask-image:radial-gradient(ellipse_58%_92%_at_87%_50%,black_36%,transparent_82%)]" />
+        }
+      >
         <Reveal>
           <Prose className="max-w-3xl">{cleanArticle(becaLab, { stripTitle: true })}</Prose>
         </Reveal>
