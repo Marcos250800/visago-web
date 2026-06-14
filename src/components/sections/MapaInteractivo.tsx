@@ -35,11 +35,14 @@ export function MapaInteractivo() {
             className="relative flex flex-col items-center"
           >
             {/* Cometas de luz detrás del globo (mismo shader que en BecaLab).
-                Solo en la vista del globo → al abrir el mapa se desmonta. */}
-            <ShaderBackground
-              intensity={1.1}
-              className="[mask-image:radial-gradient(ellipse_85%_75%_at_50%_42%,black_50%,transparent_88%)]"
-            />
+                A sangre completa (w-screen) + fundido radial → no se ve el borde
+                del recuadro. Solo en la vista del globo → al abrir el mapa se desmonta. */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[140%] w-screen -translate-x-1/2 -translate-y-1/2">
+              <ShaderBackground
+                intensity={1.1}
+                className="[mask-image:radial-gradient(ellipse_55%_70%_at_50%_44%,black_18%,transparent_80%)]"
+              />
+            </div>
             <div className="relative z-10 flex w-full flex-col items-center">
               <InteractiveGlobe onSelect={() => setView("spain")} />
               <p className="mt-6 text-center text-sm text-muted">
