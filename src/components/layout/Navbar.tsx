@@ -144,7 +144,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 top-16 z-40 overflow-y-auto bg-background lg:hidden"
+          className="no-scrollbar fixed inset-0 top-16 z-40 overflow-y-auto bg-background lg:hidden"
         >
           <div className="container flex min-h-full flex-col gap-2 py-8">
             {NAV.map((item, i) => (

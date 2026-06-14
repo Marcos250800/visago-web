@@ -21,10 +21,16 @@ export function LogoParticles({ className }: { className?: string }) {
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const color = theme === "light" ? "10,10,11" : "244,244,243";
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const isMobile = window.innerWidth < 768;
-    // Móvil: menos partículas y puntos algo mayores (redondos) → más limpio.
+    // Móvil: renderiza a la resolución real del dispositivo (hasta 3x) para que
+    // los puntos se vean nítidos y no pixelados.
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 3 : 2);
+    // Móvil: puntos redondos algo mayores → más limpio.
     const dotR = isMobile ? 1.1 : 0.9;
+    // Repulsión: en móvil, radio y fuerza menores → deformación sutil.
+    const repelR = isMobile ? 55 : 110;
+    const repelR2 = repelR * repelR;
+    const repelForce = isMobile ? 1.2 : 3.2;
 
     let w = 0;
     let h = 0;
@@ -121,9 +127,9 @@ export function LogoParticles({ className }: { className?: string }) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const d2 = dx * dx + dy * dy;
-        if (d2 < 12000) {
+        if (d2 < repelR2) {
           const d = Math.sqrt(d2) || 1;
-          const f = ((110 - d) / 110) * 3.2;
+          const f = ((repelR - d) / repelR) * repelForce;
           ax += (dx / d) * f;
           ay += (dy / d) * f;
         }

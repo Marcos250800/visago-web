@@ -132,6 +132,14 @@ html.lenis body {
            font-medium text-foreground transition-colors duration-300 ease-smooth
            hover:bg-foreground hover:text-background;
   }
+  /* Oculta la barra de scroll (se mantiene el scroll con el dedo/rueda). */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ============================================================
