@@ -7,7 +7,10 @@
 
 export const ABOUT = {
   heading: "Sobre nosotros",
-  body: `VisaGo es una empresa online con sede en Suiza. Nuestro objetivo es ayudarte a navegar por el proceso de obtener una visa, ofreciendo servicios de asesoría profesional y gestión completa. Nuestro equipo está compuesto por asesores que conocen a fondo la normativa vigente y están al día con los cambios que puedan afectar a las solicitudes. Nos enorgullece proporcionar un servicio personalizado que se adapte a las necesidades de cada cliente. Ya sea que, necesites un visado para trabajar, estudiar o viajar. VisaGo llega para hacer que tu experiencia sea lo más sencilla y eficaz posible. Nuestra misión es facilitar el acceso a oportunidades internacionales y asegurar que cada cliente logre su objetivo de manera exitosa.`,
+  body: [
+    "VisaGo es una plataforma con sede en Suiza integrada por un equipo de asesores expertos en la gestión de visados. Nos encargamos del proceso integral y del acompañamiento en cada etapa, asegurando que cada solicitud cumpla con la normativa vigente de forma eficiente.",
+    "Ya sea por motivos laborales, académicos o de turismo, adaptamos nuestro servicio para simplificar los trámites y evitar complicaciones. Nuestro objetivo es facilitar tu acceso a oportunidades internacionales con total seguridad y eficacia.",
+  ],
 };
 
 /* ---------------------------------- Servicios ---------------------------------- */

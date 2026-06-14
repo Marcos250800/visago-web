@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { Tilt } from "@/components/motion/Tilt";
+import { FloatCard } from "@/components/motion/FloatCard";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { LogoMarkAnimated } from "@/components/brand/Logo";
@@ -15,7 +17,7 @@ export function Services() {
       {/* Malla de partículas que rellena la zona derecha de la cabecera */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_62%_85%_at_76%_28%,black,transparent_74%)]"
+        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_88%_92%_at_70%_28%,black,transparent_82%)]"
       >
         <ParticleField className="h-full w-full" connect={130} />
       </div>
@@ -24,7 +26,7 @@ export function Services() {
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <Reveal>
-              <p className="kicker">Servicios</p>
+              <ScrambleText text="Servicios" className="kicker" />
             </Reveal>
             <h2 className="mt-5 max-w-2xl text-balance font-display text-display-sm font-medium">
               <RevealWords text={SERVICES_INTRO} />
@@ -50,7 +52,7 @@ export function Services() {
 
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.id} delay={(i % 3) * 0.06} className="group h-full">
+            <FloatCard key={s.id} index={i} className="group h-full">
               <Tilt className="h-full" max={6}>
               <Link
                 href={`/servicios#${s.id}`}
@@ -68,7 +70,7 @@ export function Services() {
                 </div>
               </Link>
               </Tilt>
-            </Reveal>
+            </FloatCard>
           ))}
         </div>
       </div>

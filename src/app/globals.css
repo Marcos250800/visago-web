@@ -134,6 +134,62 @@ html.lenis body {
   }
 }
 
+/* ============================================================
+   Leaflet (mapa interactivo) — popups/controles monocromos
+   ============================================================ */
+.leaflet-container {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: rgb(var(--background));
+}
+.leaflet-popup-content-wrapper {
+  background: rgb(var(--card));
+  color: rgb(var(--foreground));
+  border: 1px solid rgb(var(--foreground) / 0.12);
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.leaflet-popup-content {
+  margin: 0.9rem 1rem;
+  min-width: 180px;
+}
+.leaflet-popup-content a {
+  color: rgb(var(--foreground));
+}
+.leaflet-popup-tip {
+  background: rgb(var(--card));
+  border: 1px solid rgb(var(--foreground) / 0.12);
+}
+.leaflet-popup-close-button {
+  color: rgb(var(--muted)) !important;
+}
+.leaflet-control-zoom {
+  border: 1px solid rgb(var(--foreground) / 0.12) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+.leaflet-control-zoom a {
+  background: rgb(var(--card)) !important;
+  color: rgb(var(--foreground)) !important;
+  border-color: rgb(var(--foreground) / 0.12) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: rgb(var(--background)) !important;
+}
+/* El cursor personalizado (cursor-none) oculta el puntero; dentro del mapa lo
+   restauramos para poder apuntar y seleccionar universidades. */
+html.cursor-none .leaflet-container {
+  cursor: grab !important;
+}
+html.cursor-none .leaflet-dragging .leaflet-container {
+  cursor: grabbing !important;
+}
+html.cursor-none .leaflet-interactive,
+html.cursor-none .leaflet-marker-icon,
+html.cursor-none .leaflet-control-zoom a,
+html.cursor-none .leaflet-popup-content a {
+  cursor: pointer !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

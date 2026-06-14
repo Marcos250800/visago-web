@@ -35,12 +35,19 @@ export function Hero() {
         }}
       />
 
-      {/* Partículas que forman el logo */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-40 md:left-auto md:right-[-4%] md:w-[58%] md:opacity-100">
+      {/* Partículas que forman el logo — ESCRITORIO: a la derecha */}
+      <div className="pointer-events-none absolute inset-0 z-0 hidden md:left-auto md:right-[-4%] md:block md:w-[58%]">
         <LogoParticles className="h-full w-full" />
       </div>
 
-      <motion.div style={{ y, opacity }} className="container relative z-10 flex flex-1 flex-col justify-center pt-28">
+      {/* Logo animado — MÓVIL: franja superior dedicada (no pisa el texto) */}
+      <div className="container relative z-10 flex justify-center pt-24 md:hidden">
+        <div className="aspect-square w-1/2 max-w-[210px]">
+          <LogoParticles className="h-full w-full" />
+        </div>
+      </div>
+
+      <motion.div style={{ y, opacity }} className="container relative z-10 flex flex-1 flex-col justify-center pt-6 md:pt-28">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

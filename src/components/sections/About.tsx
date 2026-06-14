@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { FlowPaths } from "@/components/ui/FlowPaths";
 import { ABOUT } from "@/lib/content";
 
@@ -15,7 +16,7 @@ export function About() {
       <div className="container relative grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
           <Reveal>
-            <p className="kicker">{ABOUT.heading}</p>
+            <ScrambleText text={ABOUT.heading} className="kicker" />
           </Reveal>
           <p className="mt-6 font-display text-display-sm font-medium">
             <RevealWords text="Empresa online con sede en Suiza." />
@@ -24,9 +25,11 @@ export function About() {
 
         <div className="md:col-span-7 md:col-start-6">
           <Reveal delay={0.1}>
-            <p className="text-balance text-xl leading-relaxed text-muted md:text-2xl">
-              {ABOUT.body}
-            </p>
+            <div className="space-y-5 text-balance text-xl leading-relaxed text-muted md:text-2xl">
+              {ABOUT.body.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
           </Reveal>
         </div>
       </div>

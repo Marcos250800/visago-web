@@ -67,7 +67,7 @@ export function CustomCursor() {
     <div
       ref={ringRef}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[100] h-7 w-7 rounded-full border border-foreground opacity-0 mix-blend-difference"
+      className="pointer-events-none fixed left-0 top-0 z-[100] h-7 w-7 rounded-full border border-white opacity-0 mix-blend-difference"
       style={{ willChange: "transform, opacity" }}
     />
   );

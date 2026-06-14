@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FAQS, type Faq as FaqItem } from "@/lib/content";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 
 /** Acordeón de FAQs reutilizable (home y página dedicada). */
@@ -61,7 +62,7 @@ export function Faq() {
       <SectionDivider />
       <div className="container relative grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="kicker">Preguntas frecuentes</p>
+          <ScrambleText text="Preguntas frecuentes" className="kicker" />
           <h2 className="mt-5 font-display text-display-sm font-medium">
             <RevealWords text="Resolvemos tus dudas." />
           </h2>

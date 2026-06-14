@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { LogoMark } from "@/components/brand/Logo";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { Tilt } from "@/components/motion/Tilt";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { SITE } from "@/lib/site";
 
@@ -25,21 +26,21 @@ const CARDS: Card[] = [
     title: "Estudiar en España",
     desc: "Visado de estudio, homologación de títulos, máster y formación profesional.",
     href: "/blog-espana",
-    image: "/showcase/espana.jpg",
+    image: "/showcase/espana.webp",
   },
   {
     kicker: "Destino · EE.UU.",
     title: "Estudiar en EE.UU.",
     desc: "Visados F-1 / M-1, admisiones universitarias y planificación de costes.",
     href: "/blog-eeuu",
-    image: "/showcase/eeuu.jpg",
+    image: "/showcase/eeuu.webp",
   },
   {
     kicker: "Recurso · BecaLab",
     title: "Becas con IA",
     desc: "Tu mentor inteligente para becas en España: probabilidad de éxito y optimización con IA.",
     href: "/becalab",
-    image: "/showcase/becalab.jpg",
+    image: "/showcase/becalab.webp",
   },
   {
     kicker: "Empieza hoy",
@@ -47,6 +48,7 @@ const CARDS: Card[] = [
     desc: "Cuéntanos tu caso y te asesoramos sin compromiso por WhatsApp.",
     href: SITE.whatsapp,
     external: true,
+    image: "/showcase/asesor.webp",
   },
 ];
 
@@ -92,7 +94,7 @@ export function HorizontalShowcase() {
         <div className="container">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <p className="kicker">Destinos &amp; Recursos</p>
+              <ScrambleText text="Destinos & Recursos" className="kicker" />
               <h2 className="mt-5 font-display text-display-sm font-medium">
                 <RevealWords text="Explora tu ruta." />
               </h2>
@@ -132,7 +134,7 @@ export function HorizontalShowcase() {
                 <LogoMark className="pointer-events-none absolute -right-12 -top-10 h-52 w-52 text-foreground/[0.05] transition-transform duration-700 group-hover:scale-110 group-hover:text-foreground/[0.08]" />
 
                 <div className="flex items-center justify-between">
-                  <span className="kicker">{card.kicker}</span>
+                  <span className="kicker !text-black/75 [text-shadow:0_1px_10px_rgb(255_255_255_/_0.55)]">{card.kicker}</span>
                   <span aria-hidden className="text-xl opacity-30 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
                     →
                   </span>

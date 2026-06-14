@@ -6,6 +6,7 @@ import { Services } from "@/components/sections/Services";
 import { HorizontalShowcase } from "@/components/sections/HorizontalShowcase";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
+import { HomeCta } from "@/components/sections/HomeCta";
 import { FlowPaths } from "@/components/ui/FlowPaths";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Route />
       <Services />
       <HorizontalShowcase />
+      <HomeCta />
 
       {/* FAQ + Contacto comparten un único grupo de líneas continuo: nacen
           arriba, atraviesan la raya divisoria y siguen hacia abajo sin cortarse. */}

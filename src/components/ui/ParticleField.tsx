@@ -10,9 +10,9 @@ import { useTheme } from "@/components/theme/ThemeProvider";
  */
 export function ParticleField({
   className,
-  density = 0.00006,
+  density = 0.00007,
   connect = 130,
-  max = 70,
+  max = 85,
 }: {
   className?: string;
   density?: number;
@@ -83,7 +83,7 @@ export function ParticleField({
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d < connect) {
-            ctx!.strokeStyle = `rgba(${rgb},${(1 - d / connect) * 0.13})`;
+            ctx!.strokeStyle = `rgba(${rgb},${(1 - d / connect) * 0.22})`;
             ctx!.lineWidth = 1;
             ctx!.beginPath();
             ctx!.moveTo(a.x, a.y);
@@ -92,10 +92,10 @@ export function ParticleField({
           }
         }
       }
-      ctx!.fillStyle = `rgba(${rgb},0.55)`;
+      ctx!.fillStyle = `rgba(${rgb},0.78)`;
       for (const p of ps) {
         ctx!.beginPath();
-        ctx!.arc(p.x, p.y, 1.3, 0, Math.PI * 2);
+        ctx!.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
         ctx!.fill();
       }
     }

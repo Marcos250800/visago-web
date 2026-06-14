@@ -6,6 +6,7 @@ import { ROUTE_STEPS } from "@/lib/content";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 
 /**
  * "Tu ruta" — núcleo del scrolltelling.
@@ -26,7 +27,7 @@ export function Route() {
       {/* Malla de partículas (rellena el espacio y aporta dinamismo) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_75%_80%_at_32%_45%,black,transparent_82%)]"
+        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_88%_at_36%_58%,black,transparent_82%)]"
       >
         <ParticleField className="h-full w-full" connect={140} />
       </div>
@@ -35,7 +36,7 @@ export function Route() {
         {/* Columna fija */}
         <div className="md:col-span-4">
           <div className="md:sticky md:top-28">
-            <p className="kicker">El proceso</p>
+            <ScrambleText text="El proceso" className="kicker" />
             <h2 className="mt-5 font-display text-display-sm font-medium">
               <RevealWords text="Tu ruta, paso a paso." />
             </h2>
