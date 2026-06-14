@@ -17,21 +17,28 @@ export function EntryAudio({ src = "/audio/voz-entrada.mp3" }: { src?: string })
     if (!audio) return;
 
     let done = false;
-    const events = ["pointerdown", "keydown", "touchstart"] as const;
+    const events = ["pointerdown", "touchstart", "click", "keydown"] as const;
 
     const cleanup = () => events.forEach((e) => window.removeEventListener(e, trigger));
 
+    // Reproduce en el primer gesto del usuario. Si el navegador lo rechaza
+    // (típico en móvil si el audio aún no está listo), NO nos rendimos: se
+    // reintenta en el siguiente gesto hasta que suene.
     function trigger() {
       if (done) return;
-      done = true;
-      cleanup();
       audio!
         .play()
-        .then(() => setPlaying(true))
-        .catch(() => setPlaying(false));
+        .then(() => {
+          done = true;
+          cleanup();
+          setPlaying(true);
+        })
+        .catch(() => {
+          /* aún no se pudo: se reintenta en el siguiente gesto */
+        });
     }
 
-    events.forEach((e) => window.addEventListener(e, trigger, { once: true, passive: true }));
+    events.forEach((e) => window.addEventListener(e, trigger, { passive: true }));
     const onEnded = () => setPlaying(false);
     audio.addEventListener("ended", onEnded);
 
