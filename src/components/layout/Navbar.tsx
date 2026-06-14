@@ -29,12 +29,13 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        scrolled ? "border-b border-line bg-background/80 backdrop-blur-md" : "border-b border-transparent",
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+          scrolled ? "border-b border-line bg-background/80 backdrop-blur-md" : "border-b border-transparent",
+        )}
+      >
       <nav className="container flex h-16 items-center justify-between md:h-20">
         <Link href="/" aria-label="VisaGo — inicio" onClick={() => setOpen(false)}>
           <Wordmark />
@@ -127,9 +128,13 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+      </header>
 
+      {/* El cajón va FUERA del header: si está dentro, el `backdrop-blur` del
+          header (al hacer scroll) lo vuelve contenedor de los `fixed` y el menú
+          se posiciona mal. Fuera, siempre es relativo a la pantalla. */}
       <MobileDrawer open={open} onClose={() => setOpen(false)} />
-    </header>
+    </>
   );
 }
 
