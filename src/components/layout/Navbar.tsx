@@ -120,8 +120,9 @@ export function Navbar() {
             className="grid h-9 w-9 place-items-center rounded-full border border-line text-foreground lg:hidden"
           >
             <div className="relative h-3 w-4">
-              <span className={cn("absolute left-0 top-0 h-[1.5px] w-full bg-current transition-transform duration-300", open && "top-1.5 rotate-45")} />
-              <span className={cn("absolute bottom-0 left-0 h-[1.5px] w-full bg-current transition-transform duration-300", open && "bottom-1.5 -rotate-45")} />
+              <span className={cn("absolute left-0 top-0 h-[1.5px] w-full bg-current transition-all duration-300", open && "top-1/2 -translate-y-1/2 rotate-45")} />
+              <span className={cn("absolute left-0 top-1/2 h-[1.5px] w-full -translate-y-1/2 bg-current transition-opacity duration-200", open && "opacity-0")} />
+              <span className={cn("absolute bottom-0 left-0 h-[1.5px] w-full bg-current transition-all duration-300", open && "bottom-1/2 translate-y-1/2 -rotate-45")} />
             </div>
           </button>
         </div>

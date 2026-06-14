@@ -13,7 +13,6 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { EntryAudio } from "@/components/ui/EntryAudio";
-import { MobilePreview } from "@/components/ui/MobilePreview";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 const geistSans = localFont({
@@ -96,7 +95,6 @@ export default function RootLayout({
           <SmoothScroll>
             <CustomCursor />
             <EntryAudio />
-            <MobilePreview />
             <ScrollProgress />
             <Navbar />
             {children}

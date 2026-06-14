@@ -5,8 +5,9 @@ import { useTheme } from "@/components/theme/ThemeProvider";
 
 /**
  * Partículas que se ensamblan formando el isotipo de VisaGo (ondas).
- * Canvas 2D, interactivo (repulsión con el cursor), con deriva sutil en reposo.
- * Theme-aware (blanco en oscuro / negro en claro) y respeta prefers-reduced-motion.
+ * Canvas 2D, interactivo (repulsión con el cursor Y con el dedo en móvil), con
+ * deriva sutil en reposo. En móvil hay menos partículas y son redondas (evita
+ * el aspecto "pixelado"). Theme-aware y respeta prefers-reduced-motion.
  */
 export function LogoParticles({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -21,6 +22,9 @@ export function LogoParticles({ className }: { className?: string }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const color = theme === "light" ? "10,10,11" : "244,244,243";
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const isMobile = window.innerWidth < 768;
+    // Móvil: menos partículas y puntos algo mayores (redondos) → más limpio.
+    const dotR = isMobile ? 1.1 : 0.9;
 
     let w = 0;
     let h = 0;
@@ -63,8 +67,8 @@ export function LogoParticles({ className }: { className?: string }) {
 
       const data = o.getImageData(0, 0, S, S).data;
       const pts: [number, number][] = [];
-      // Paso menor = más partículas (más relleno). Algo mayor en móvil.
-      const step = window.innerWidth < 768 ? 4 : 3;
+      // Paso menor = más partículas (más relleno). Mayor en móvil = menos puntos.
+      const step = isMobile ? 5 : 3;
       for (let y = 0; y < S; y += step) {
         for (let x = 0; x < S; x += step) {
           if (data[(y * S + x) * 4 + 3] > 110) pts.push([x, y]);
@@ -107,6 +111,7 @@ export function LogoParticles({ className }: { className?: string }) {
     function draw() {
       ctx!.clearRect(0, 0, w, h);
       t += 0.01;
+      ctx!.fillStyle = `rgb(${color})`;
       for (const p of particles) {
         const driftX = reduce ? 0 : Math.cos(t + p.ph) * 0.35;
         const driftY = reduce ? 0 : Math.sin(t * 0.9 + p.ph) * 0.35;
@@ -129,8 +134,9 @@ export function LogoParticles({ className }: { className?: string }) {
         p.y += p.vy;
 
         ctx!.globalAlpha = p.o;
-        ctx!.fillStyle = `rgb(${color})`;
-        ctx!.fillRect(p.x, p.y, 1.6, 1.6);
+        ctx!.beginPath();
+        ctx!.arc(p.x, p.y, dotR, 0, Math.PI * 2);
+        ctx!.fill();
       }
       ctx!.globalAlpha = 1;
     }
@@ -160,8 +166,20 @@ export function LogoParticles({ className }: { className?: string }) {
       mouse.x = -9999;
       mouse.y = -9999;
     };
+    // Táctil: el dedo perturba las partículas igual que el ratón.
+    const onTouch = (e: TouchEvent) => {
+      const tch = e.touches[0];
+      if (!tch) return;
+      const r = canvas!.getBoundingClientRect();
+      mouse.x = tch.clientX - r.left;
+      mouse.y = tch.clientY - r.top;
+    };
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseout", onLeave);
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchend", onLeave);
+    window.addEventListener("touchcancel", onLeave);
 
     const ro = new ResizeObserver(() => init());
     ro.observe(canvas);
@@ -175,6 +193,10 @@ export function LogoParticles({ className }: { className?: string }) {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseout", onLeave);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchend", onLeave);
+      window.removeEventListener("touchcancel", onLeave);
       ro.disconnect();
       io.disconnect();
     };
