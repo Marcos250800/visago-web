@@ -25,8 +25,9 @@ export function LogoParticles({ className }: { className?: string }) {
     // Móvil: renderiza a la resolución real del dispositivo (hasta 3x) para que
     // los puntos se vean nítidos y no pixelados.
     const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 3 : 2);
-    // Móvil: puntos redondos algo mayores → más limpio.
-    const dotR = isMobile ? 1.1 : 0.9;
+    // Config específica para móvil: como el logo es pequeño, partículas MÁS
+    // PEQUEÑAS (si no, se ven toscas al escalar la versión de PC).
+    const dotR = isMobile ? 0.6 : 0.9;
     // Repulsión: en móvil, radio y fuerza menores → deformación sutil.
     const repelR = isMobile ? 55 : 110;
     const repelR2 = repelR * repelR;
@@ -73,8 +74,9 @@ export function LogoParticles({ className }: { className?: string }) {
 
       const data = o.getImageData(0, 0, S, S).data;
       const pts: [number, number][] = [];
-      // Paso menor = más partículas (más relleno). Mayor en móvil = menos puntos.
-      const step = isMobile ? 5 : 3;
+      // Densidad de muestreo. En móvil la calidad la dan puntos diminutos (dotR)
+      // a alta resolución (dpr), no menos partículas → líneas suaves, no pixeladas.
+      const step = 3;
       for (let y = 0; y < S; y += step) {
         for (let x = 0; x < S; x += step) {
           if (data[(y * S + x) * 4 + 3] > 110) pts.push([x, y]);
