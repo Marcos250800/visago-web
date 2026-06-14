@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FAQS, type Faq as FaqItem } from "@/lib/content";
 import { RevealWords } from "@/components/motion/RevealWords";
 import { SectionDivider } from "@/components/ui/SectionDivider";
-import { FlowPaths } from "@/components/ui/FlowPaths";
 
 /** Acordeón de FAQs reutilizable (home y página dedicada). */
 export function FaqAccordion({ items = FAQS }: { items?: FaqItem[] }) {
@@ -58,11 +57,8 @@ export function FaqAccordion({ items = FAQS }: { items?: FaqItem[] }) {
 /** Sección FAQ para la home. */
 export function Faq() {
   return (
-    <section id="faq" className="relative overflow-hidden bg-background py-24 md:py-36">
+    <section id="faq" className="relative py-24 md:py-36">
       <SectionDivider />
-      <FlowPaths
-        className="pointer-events-none absolute inset-0 text-foreground [mask-image:radial-gradient(ellipse_55%_70%_at_24%_62%,black,transparent_72%)]"
-      />
       <div className="container relative grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
           <p className="kicker">Preguntas frecuentes</p>
