@@ -181,10 +181,11 @@ export function HorizontalShowcase() {
           ))}
         </motion.div>
 
-        {/* MÓVIL: swipe horizontal con el dedo */}
+        {/* MÓVIL: swipe horizontal con el dedo. `isolate` crea el contexto de
+            apilamiento que en PC aporta Tilt → la imagen (-z-10) queda visible. */}
         <div className="no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 lg:hidden">
           {CARDS.map((card) => (
-            <div key={card.title} className={`${wrapCls} snap-center`}>
+            <div key={card.title} className={`${wrapCls} snap-center isolate`}>
               <CardLink card={card} />
             </div>
           ))}
