@@ -40,8 +40,7 @@ export function MapaInteractivo() {
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[140%] w-screen -translate-x-1/2 -translate-y-1/2">
               <ShaderBackground
                 intensity={1.1}
-                mobileIntensity={1.3}
-                className="[mask-image:radial-gradient(ellipse_55%_70%_at_50%_44%,black_18%,transparent_80%)]"
+                className="[mask-image:linear-gradient(to_bottom,transparent,black_14%,black_86%,transparent)] lg:[mask-image:radial-gradient(ellipse_55%_70%_at_50%_44%,black_18%,transparent_80%)]"
               />
             </div>
             <div className="relative z-10 flex w-full flex-col items-center">

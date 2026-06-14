@@ -20,12 +20,9 @@ import { cn } from "@/lib/utils";
 export function ShaderBackground({
   className,
   intensity = 1.2,
-  mobileIntensity,
 }: {
   className?: string;
   intensity?: number;
-  /** Intensidad en móvil/tablet. Por defecto `intensity * 0.75` (más tenue). */
-  mobileIntensity?: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -62,7 +59,7 @@ export function ShaderBackground({
           uniforms: {
             iTime: { value: 0 },
             iResolution: { value: new THREE.Vector2(1, 1) },
-            uIntensity: { value: mobile ? mobileIntensity ?? intensity * 0.75 : intensity },
+            uIntensity: { value: mobile ? intensity * 0.75 : intensity },
           },
           vertexShader: `void main(){ gl_Position = vec4(position, 1.0); }`,
           fragmentShader: `
@@ -178,7 +175,7 @@ export function ShaderBackground({
       cancelled = true;
       cleanup();
     };
-  }, [intensity, mobileIntensity]);
+  }, [intensity]);
 
   return (
     <div ref={containerRef} aria-hidden className={cn("pointer-events-none absolute inset-0", className)} />
