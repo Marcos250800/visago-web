@@ -7,6 +7,7 @@ import { ShaderBackground } from "@/components/ui/ShaderBackground";
 import { Reveal } from "@/components/motion/Reveal";
 import { cleanArticle } from "@/lib/article-utils";
 import { becaLab } from "@/lib/articles";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "BecaLab — Becas para estudiar en España",
@@ -22,6 +23,7 @@ export default function BecaLabPage() {
         kicker="Recursos · BecaLab"
         title="Becas para estudiar en España"
         intro="Tu mentor inteligente para becas: del diagnóstico de probabilidad a la optimización de tus documentos con IA."
+        cta={{ label: "Abrir BecaLab", href: SITE.becalabApp }}
       />
 
       <ArticleSection
@@ -34,7 +36,11 @@ export default function BecaLabPage() {
         </Reveal>
       </ArticleSection>
 
-      <CtaBanner title="Empieza tu beca con ventaja" subtitle="Combina la tecnología de BecaLab con la asesoría de VisaGo." />
+      <CtaBanner
+        title="Empieza tu beca con ventaja"
+        subtitle="Combina la tecnología de BecaLab con la asesoría de VisaGo."
+        cta={{ label: "Abrir BecaLab", href: SITE.becalabApp }}
+      />
     </main>
   );
 }

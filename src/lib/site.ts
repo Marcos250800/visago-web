@@ -21,12 +21,13 @@ export const SITE = {
   description:
     "VisaGo: tramitación de visados de turismo, estudio y trabajo para EEUU y España. Asesoría profesional online y gestión completa de tu visa.",
   location: "Berna, Suiza",
-  email: "info@visago.online",
-  emailAlt: "visagonline@gmail.com",
+  email: "visagonline@gmail.com",
+  emailAlt: "info@visago.online",
   phone: "+34 611 838 379",
   whatsapp: "https://wa.me/34611838379",
   instagram: "https://www.instagram.com/visago_online",
   instagramHandle: "@visago_online",
+  becalabApp: "https://becalab.app/",
 } as const;
 
 export type NavChild = { label: string; href: string; description?: string };
@@ -52,6 +53,10 @@ export const NAV: NavItem[] = [
     label: "Recursos",
     href: "/recursos",
     children: [
+      { label: "Dudas en un minuto", href: "/recursos", description: "Resuelve dudas frecuentes en un minuto, en Instagram" },
+      { label: "Mapa interactivo", href: "/mapa-interactivo", description: "Universidades públicas de España en un globo interactivo" },
+      { label: "Guía FP", href: "/guia-fp", description: "Formación Profesional de Grado Superior en España" },
+      { label: "Guía Máster", href: "/guia-master", description: "Estudiar un máster oficial en universidades públicas de España" },
       { label: "Blog España", href: "/blog-espana", description: "Guía completa del visado de estudio para España" },
       { label: "Blog EE.UU.", href: "/blog-eeuu", description: "Cómo estudiar en Estados Unidos siendo extranjero" },
       { label: "BecaLab", href: "/becalab", description: "Tu mentor inteligente para becas en España" },
