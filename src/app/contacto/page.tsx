@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { ContactMap } from "@/components/sections/ContactMap";
 import { Reveal } from "@/components/motion/Reveal";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function ContactoPage() {
         <div className="container grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <p className="kicker">Canales directos</p>
+              <ScrambleText text="Canales directos" className="kicker" />
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {channels.map((c) => (
                   <li key={c.label}>
@@ -52,9 +53,8 @@ export default function ContactoPage() {
 
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-line bg-card p-7 md:p-9">
-                <ContactForm />
-              </div>
+              <ScrambleText text="Dónde estamos" className="kicker" />
+              <ContactMap className="mt-6 h-[340px] md:h-[460px]" />
             </Reveal>
           </div>
         </div>

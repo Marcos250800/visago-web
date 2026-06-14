@@ -1,8 +1,9 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealWords } from "@/components/motion/RevealWords";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { VerticalBeam } from "@/components/ui/VerticalBeam";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { ContactMap } from "@/components/sections/ContactMap";
 import { SITE } from "@/lib/site";
 
 /** Sección Contacto / CTA final de la home. */
@@ -15,7 +16,7 @@ export function Contact() {
       <div className="container relative grid gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <Reveal>
-            <p className="kicker">Contáctanos</p>
+            <ScrambleText text="Contáctanos" className="kicker" />
             <h2 className="mt-5 font-display text-display-sm font-medium">
               <RevealWords text="¿Empezamos tu ruta?" />
             </h2>
@@ -40,9 +41,7 @@ export function Contact() {
 
         <div className="md:col-span-6 md:col-start-7">
           <Reveal delay={0.1}>
-            <div className="rounded-2xl border border-line bg-card p-7 md:p-9">
-              <ContactForm />
-            </div>
+            <ContactMap className="h-[340px] md:h-[460px]" />
           </Reveal>
         </div>
       </div>
