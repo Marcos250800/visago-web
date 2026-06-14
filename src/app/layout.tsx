@@ -10,6 +10,8 @@ import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { EntryAudio } from "@/components/ui/EntryAudio";
+import { MobilePreview } from "@/components/ui/MobilePreview";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 const geistSans = localFont({
@@ -60,18 +62,16 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.name }],
   creator: SITE.name,
   alternates: { canonical: "/" },
+  // OJO: sin title/description aquí → Next los deriva del title/description de
+  // cada página, para que la preview (WhatsApp, redes) muestre el texto correcto
+  // de cada sección. La imagen la añade automáticamente `opengraph-image.tsx`.
   openGraph: {
     type: "website",
     locale: SITE.locale,
-    url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
   },
   robots: { index: true, follow: true },
 };
@@ -93,6 +93,8 @@ export default function RootLayout({
         <ThemeProvider>
           <SmoothScroll>
             <CustomCursor />
+            <EntryAudio />
+            <MobilePreview />
             <ScrollProgress />
             <Navbar />
             {children}
