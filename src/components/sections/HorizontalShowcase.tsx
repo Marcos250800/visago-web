@@ -109,7 +109,7 @@ function CardContent({ card }: { card: Card }) {
       <LogoMark className="pointer-events-none absolute -right-12 -top-10 h-52 w-52 text-foreground/[0.05] transition-transform duration-700 group-hover:scale-110 group-hover:text-foreground/[0.08] group-active:scale-110 group-active:text-foreground/[0.08]" />
 
       <div className="flex items-center justify-between">
-        <span className="kicker !text-black/75 [text-shadow:0_1px_10px_rgb(255_255_255_/_0.55)]">{card.kicker}</span>
+        <span className="kicker !text-white/85 [text-shadow:0_2px_6px_rgba(0,0,0,0.95)]">{card.kicker}</span>
         <span aria-hidden className="text-xl opacity-30 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 group-active:translate-x-1 group-active:opacity-100">
           →
         </span>
