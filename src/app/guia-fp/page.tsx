@@ -300,11 +300,11 @@ export default function GuiaFpPage() {
               <div>
                 <h3 className="font-display text-lg font-semibold">Proceso de solicitud</h3>
                 <div className="mt-4 flex flex-wrap items-center gap-2 font-mono text-sm">
-                  <span className="rounded-md border border-line px-3 py-1.5">Solicitar</span>
+                  <span className="rounded-md border border-line px-3 py-1.5">Homologar</span>
                   <span aria-hidden className="text-muted">→</span>
                   <span className="rounded-md border border-line px-3 py-1.5">Buscar FP</span>
                   <span aria-hidden className="text-muted">→</span>
-                  <span className="rounded-md border border-line px-3 py-1.5">Homologar</span>
+                  <span className="rounded-md border border-line px-3 py-1.5">Solicitar</span>
                 </div>
               </div>
             </div>
