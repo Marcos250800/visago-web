@@ -280,8 +280,8 @@ export default function GuiaMasterPage() {
               Todo lo que necesitas saber para estudiar en universidades públicas españolas como estudiante extranjero.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Contactar por WhatsApp <span aria-hidden>→</span>
+              <a href="https://visagofp.base44.app/Catalog" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                Catálogo de FP <span aria-hidden>↗</span>
               </a>
             </div>
           </Reveal>
