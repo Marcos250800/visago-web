@@ -16,8 +16,8 @@ export default function Home() {
       <KeywordMarquee />
       <About />
       <Route />
-      <Services />
       <HorizontalShowcase />
+      <Services />
       <HomeCta />
 
       {/* FAQ + Contacto comparten un único grupo de líneas continuo: nacen
