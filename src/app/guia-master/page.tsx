@@ -283,9 +283,6 @@ export default function GuiaMasterPage() {
               <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Contactar por WhatsApp <span aria-hidden>→</span>
               </a>
-              <a href={SITE.url} target="_blank" rel="noopener noreferrer" className="btn-ghost">
-                Sitio Web
-              </a>
             </div>
           </Reveal>
         </div>
@@ -586,14 +583,6 @@ export default function GuiaMasterPage() {
                 >
                   WhatsApp
                   <span aria-hidden>→</span>
-                </a>
-                <a
-                  href={SITE.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-contrast-fg/30 px-6 py-3 text-sm font-medium text-contrast-fg transition-colors duration-300 hover:bg-contrast-fg hover:text-contrast"
-                >
-                  Sitio Web
                 </a>
               </div>
             </div>
